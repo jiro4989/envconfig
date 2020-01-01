@@ -20,7 +20,7 @@ runnableExamples:
   putEnv("MYAPP_PORT", "1234")
   putEnv("MYAPP_DEV", "true")
 
-  let obj = getEnvObject(MyApp)
+  let obj = getEnvObject[MyApp]()
   echo "MYAPP_NAME: " & obj.name
   echo "MYAPP_VERSION: " & obj.name
   echo "MYAPP_DIR: " & obj.name
@@ -37,7 +37,7 @@ proc camelCaseToUpperSnakeCase(s: string): string =
       result.add("_")
     result.add(ch.toUpperAscii)
 
-proc getEnvObject*[T](prefix = ""): T =
+proc getEnvObject*(T: typedesc, prefix = ""): T =
   # 1. Get object name and type name
   let envPrefix =
     if prefix != "": prefix

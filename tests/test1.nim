@@ -38,7 +38,7 @@ suite "proc getObjectFieldNamesAndTypeNames":
 
     delEnv("MY_APP_NAME")
   test "simple object":
-    check getEnvObject[MyApp]() == MyApp(
+    check getEnvObject(MyApp) == MyApp(
       name: "envconfig",
       version: "v1.0.0",
       dir: "/opt/envconfig",
@@ -47,6 +47,6 @@ suite "proc getObjectFieldNamesAndTypeNames":
       taxRate: 0.08,
       )
   test "env prefix is MY_APP":
-    check getEnvObject[MyApp]("MY_APP") == MyApp(
+    check getEnvObject(MyApp, "MY_APP") == MyApp(
       name: "envconfig2",
       )
