@@ -20,7 +20,7 @@ runnableExamples:
   putEnv("MYAPP_PORT", "1234")
   putEnv("MYAPP_DEV", "true")
 
-  let obj = getEnvObject[MyApp]()
+  let obj = getEnvObject(MyApp)
   echo "MYAPP_NAME: " & obj.name
   echo "MYAPP_VERSION: " & obj.name
   echo "MYAPP_DIR: " & obj.name
