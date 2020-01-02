@@ -927,15 +927,18 @@ function main() {
     <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span>
     <span class="Identifier">num</span><span class="Other">:</span> <span class="Identifier">int</span>
     <span class="Identifier">devMode</span><span class="Other">:</span> <span class="Identifier">bool</span>
+    <span class="Identifier">fluits</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span>
 
 <span class="Identifier">putEnv</span><span class="Other">(</span><span class="StringLit">&quot;MYAPP_NAME&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;myapp&quot;</span><span class="Other">)</span>
 <span class="Identifier">putEnv</span><span class="Other">(</span><span class="StringLit">&quot;MYAPP_NUM&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;5&quot;</span><span class="Other">)</span>
 <span class="Identifier">putEnv</span><span class="Other">(</span><span class="StringLit">&quot;MYAPP_DEV_MODE&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;true&quot;</span><span class="Other">)</span>
-<span class="Keyword">let</span> <span class="Identifier">config</span> <span class="Other">=</span> <span class="Identifier">getEnvConfig</span><span class="Other">(</span><span class="Identifier">MyApp</span><span class="Other">,</span> <span class="Identifier">requires</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="StringLit">&quot;name&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;num&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;devMode&quot;</span><span class="Other">]</span><span class="Other">,</span>
+<span class="Identifier">putEnv</span><span class="Other">(</span><span class="StringLit">&quot;MYAPP_FLUITS&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;apple,banana,orange&quot;</span><span class="Other">)</span>
+<span class="Keyword">let</span> <span class="Identifier">config</span> <span class="Other">=</span> <span class="Identifier">getEnvConfig</span><span class="Other">(</span><span class="Identifier">MyApp</span><span class="Other">,</span> <span class="Identifier">requires</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="StringLit">&quot;name&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;num&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;devMode&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;fluits&quot;</span><span class="Other">]</span><span class="Other">,</span>
                        <span class="Identifier">mins</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">(</span><span class="StringLit">&quot;num&quot;</span><span class="Other">,</span> <span class="FloatNumber">0.0</span><span class="Other">)</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">maxs</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">(</span><span class="StringLit">&quot;num&quot;</span><span class="Other">,</span> <span class="FloatNumber">10.0</span><span class="Other">)</span><span class="Other">]</span><span class="Other">)</span>
 <span class="Identifier">doAssert</span> <span class="Identifier">config</span><span class="Other">.</span><span class="Identifier">name</span> <span class="Operator">==</span> <span class="StringLit">&quot;myapp&quot;</span>
 <span class="Identifier">doAssert</span> <span class="Identifier">config</span><span class="Other">.</span><span class="Identifier">num</span> <span class="Operator">==</span> <span class="DecNumber">5</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">config</span><span class="Other">.</span><span class="Identifier">devMode</span></pre>
+<span class="Identifier">doAssert</span> <span class="Identifier">config</span><span class="Other">.</span><span class="Identifier">devMode</span>
+<span class="Identifier">doAssert</span> <span class="Identifier">config</span><span class="Other">.</span><span class="Identifier">fluits</span> <span class="Operator">==</span> <span class="Operator">@</span><span class="Other">[</span><span class="StringLit">&quot;apple&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;banana&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;orange&quot;</span><span class="Other">]</span></pre>
 
 </dd>
 
@@ -948,7 +951,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2020-01-02 12:07:23 UTC</small>
+        <small>Made with Nim. Generated: 2020-01-02 12:14:28 UTC</small>
       </div>
     </div>
   </div>
