@@ -5,11 +5,11 @@
 ##
 
 runnableExamples:
-  import os
+  from os import putEnv
   import envconfig
 
   type
-    MyApp = ref object
+    MyApp = object
       name, version, dir: string
       port: int
       dev: bool
@@ -20,12 +20,12 @@ runnableExamples:
   putEnv("MYAPP_PORT", "1234")
   putEnv("MYAPP_DEV", "true")
 
-  let obj = getEnvConfig(MyApp)
-  echo "MYAPP_NAME: " & obj.name
-  echo "MYAPP_VERSION: " & obj.name
-  echo "MYAPP_DIR: " & obj.name
-  echo "MYAPP_PORT: " & $obj.name
-  echo "MYAPP_DEV: " & $obj.name
+  let config = getEnvConfig(MyApp)
+  doAssert config.name == "envconfig"
+  doAssert config.version == "v1.0.0"
+  doAssert config.dir == "/opt/envconfig"
+  doAssert config.port == 1234
+  doAssert config.dev == true
 
 import typeinfo
 import strutils

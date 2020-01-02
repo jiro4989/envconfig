@@ -12,3 +12,6 @@ srcDir        = "src"
 
 requires "nim >= 1.0.4"
 requires "regex >= 0.13.0"
+
+task docs, "Generate API documents":
+  exec "nimble doc --index:on --project --out:docs --hints:off src/envconfig.nim"

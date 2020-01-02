@@ -1,0 +1,50 @@
+= envconfig
+:toc:
+:sectnums:
+
+image:https://github.com/jiro4989/envconfig/workflows/build/badge.svg[Build Status]
+
+== Installation
+
+[source,bash]
+----
+nimble install envconfig
+----
+
+== Usage
+
+[source,bash]
+----
+export MYAPP_NAME=envconfig
+export MYAPP_VERSION=v1.0.0
+export MYAPP_DIR=/opt/envconfig
+export MYAPP_PORT=1234
+export MYAPP_DEV=true
+----
+
+[source,nim]
+----
+import envconfig
+
+type
+  MyApp = object
+    name, version, dir: string
+    port: int
+    dev: bool
+
+let config = getEnvConfig(MyApp)
+
+echo "MYAPP_NAME: " & config.name
+echo "MYAPP_VERSION: " & config.name
+echo "MYAPP_DIR: " & config.name
+echo "MYAPP_PORT: " & $config.name
+echo "MYAPP_DEV: " & $config.name
+----
+
+== Documents
+
+* https://jiro4989.github.io/envconfig/envconfig.html[envconfig]
+
+== LICENSE
+
+MIT
