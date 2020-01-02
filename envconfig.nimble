@@ -2,7 +2,7 @@
 
 version       = "1.0.0"
 author        = "jiro4989"
-description   = "Nim library for managing configuration data from environment variables"
+description   = "envconfig provides a function to get config objects from environment variables."
 license       = "MIT"
 srcDir        = "src"
 

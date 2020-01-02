@@ -4,6 +4,9 @@
 
 image:https://github.com/jiro4989/envconfig/workflows/build/badge.svg[Build Status]
 
+envconfig provides a function to get config objects from environment variables.
+envconfig is inspired by https://github.com/kelseyhightower/envconfig[Go envconfig].
+
 == Installation
 
 [source,bash]
@@ -73,15 +76,13 @@ echo "MYAPP_PORT: " & $config.port      # 1234
 echo "MYAPP_DEV: " & $config.dev        # true
 ----
 
-=== Environment variables name
-
-TODO
-
 === Validation
 
-TODO
+Provides tiny functions to validate values.
+A procedure can validate `requires`, `min value`, `max value` and `regex match`.
+For more informations, see also https://jiro4989.github.io/envconfig/envconfig.html[API documents].
 
-== Documents
+== API Documents
 
 * https://jiro4989.github.io/envconfig/envconfig.html[envconfig]
 

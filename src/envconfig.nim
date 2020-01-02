@@ -1,4 +1,4 @@
-## envconfig provides binding prefix of environment variables to object.
+## envconfig provides a function to get config objects from environment variables.
 ##
 ## Usage
 ## -----
