@@ -13,6 +13,10 @@ nimble install envconfig
 
 == Usage
 
+=== Basic
+
+Example that setting environment variables with shell.
+
 [source,bash]
 ----
 export MYAPP_NAME=envconfig
@@ -34,12 +38,48 @@ type
 
 let config = getEnvConfig(MyApp)
 
-echo "MYAPP_NAME: " & config.name
-echo "MYAPP_VERSION: " & config.name
-echo "MYAPP_DIR: " & config.name
-echo "MYAPP_PORT: " & $config.name
-echo "MYAPP_DEV: " & $config.name
+echo "MYAPP_NAME: " & config.name       # envconfig
+echo "MYAPP_VERSION: " & config.version # v1.0.0
+echo "MYAPP_DIR: " & config.dir         # /opt/envconfig
+echo "MYAPP_PORT: " & $config.port      # 1234
+echo "MYAPP_DEV: " & $config.dev        # true
 ----
+
+Example that setting environment variables with Nim.
+
+[source,nim]
+----
+import envconfig
+from os import putEnv
+
+type
+  MyApp = object
+    name, version, dir: string
+    port: int
+    dev: bool
+
+putEnv("MYAPP_NAME", "envconfig")
+putEnv("MYAPP_VERSION", "v1.0.0")
+putEnv("MYAPP_DIR", "/opt/envconfig")
+putEnv("MYAPP_PORT", "1234")
+putEnv("MYAPP_DEV", "true")
+
+let config = getEnvConfig(MyApp)
+
+echo "MYAPP_NAME: " & config.name       # envconfig
+echo "MYAPP_VERSION: " & config.version # v1.0.0
+echo "MYAPP_DIR: " & config.dir         # /opt/envconfig
+echo "MYAPP_PORT: " & $config.port      # 1234
+echo "MYAPP_DEV: " & $config.dev        # true
+----
+
+=== Environment variables name
+
+TODO
+
+=== Validation
+
+TODO
 
 == Documents
 
