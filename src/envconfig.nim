@@ -106,6 +106,28 @@ proc getEnvConfig*(T: typedesc, prefix = "", sep = ",",
   ##
   ## * ``array`` type is not supported.
   ## * ``ref object`` type is not supported.
+  runnableExamples:
+    from os import putEnv
+
+    type
+      MyApp = object
+        name: string
+        num: int
+        devMode: bool
+
+    putEnv("MYAPP_NAME", "myapp")
+    putEnv("MYAPP_NUM", "5")
+    putEnv("MYAPP_DEV_MODE", "true")
+
+    let config = getEnvConfig(
+      MyApp,
+      requires = @["name", "num", "devMode"],
+      mins = @[("num", 0.0)],
+      maxs = @[("num", 10.0)],
+      )
+    doAssert config.name == "myapp"
+    doAssert config.num == 5
+    doAssert config.devMode
 
   # 1. Get object name and type name
   let envPrefix =
