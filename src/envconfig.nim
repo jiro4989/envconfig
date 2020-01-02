@@ -114,20 +114,24 @@ proc getEnvConfig*(T: typedesc, prefix = "", sep = ",",
         name: string
         num: int
         devMode: bool
+        fluits: seq[string]
 
     putEnv("MYAPP_NAME", "myapp")
     putEnv("MYAPP_NUM", "5")
     putEnv("MYAPP_DEV_MODE", "true")
+    putEnv("MYAPP_FLUITS", "apple,banana,orange")
 
     let config = getEnvConfig(
       MyApp,
-      requires = @["name", "num", "devMode"],
+      requires = @["name", "num", "devMode", "fluits"],
       mins = @[("num", 0.0)],
       maxs = @[("num", 10.0)],
       )
+
     doAssert config.name == "myapp"
     doAssert config.num == 5
     doAssert config.devMode
+    doAssert config.fluits == @["apple", "banana", "orange"]
 
   # 1. Get object name and type name
   let envPrefix =
