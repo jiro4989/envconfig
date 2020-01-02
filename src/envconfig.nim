@@ -90,7 +90,7 @@ proc getEnvConfig*(T: typedesc, prefix = "", sep = ",",
   ## * `regexps` - Environment variables must regex-match `val` of each items
   ##   of seq.
   ##
-  ## **Supported primitive types:**
+  ## **Avairable field types:**
   ##
   ## * `string`, `bool`, `int`, `int8`, `int16`, `int32`, `int64`, `uint`, `uint8`, `uint16`, `uint32`, `uint64`, `float`, `float32`, `float64`, `char`, `byte`
   ## * `seq[string]`, `seq[bool]`, `seq[int]`, `seq[int8]`, `seq[int16]`, `seq[int32]`, `seq[int64]`, `seq[uint]`, `seq[uint8]`, `seq[uint16]`, `seq[uint32]`, `seq[uint64]`, `seq[float]`, `seq[float32]`, `seq[float64]`, `seq[char]`, `seq[byte]`
