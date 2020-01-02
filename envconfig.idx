@@ -1,0 +1,3 @@
+Usage	envconfig.html#usage	 Usage	
+ValidationError	envconfig.html#ValidationError	envconfig: ValidationError	
+getEnvConfig	envconfig.html#getEnvConfig,typedesc,string,string,seq[T][string],seq[T][tuple[string,float64]],seq[T][tuple[string,float64]],seq[T][tuple[string,Regex]]	envconfig: getEnvConfig(T: typedesc; prefix = &quot;&quot;; sep = &quot;,&quot;; requires: seq[string] = @[];\n             mins: seq[tuple[name: string, val: float64]] = @[];\n             maxs: seq[tuple[name: string, val: float64]] = @[];\n             regexps: seq[tuple[name: string, val: Regex]] = @[]): T:type	
