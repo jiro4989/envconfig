@@ -66,6 +66,47 @@ proc getEnvConfig*(T: typedesc, prefix = "", sep = ",",
                    maxs: seq[tuple[name: string, val: float64]] = @[],
                    regexps: seq[tuple[name: string, val: Regex]] = @[],
                    ): T =
+  ## Returns a object that values were set to fields by environment variables.
+  ## This proc lookups environment variables with UPPERCASE object name (`T`)
+  ## and UPPER_SNAKE_CASE object field names.
+  ##
+  ## A prefix of environment variables is UPPERCASE object name (`T`).
+  ## You set `prefix` if you want to change a prefix of environment variables.
+  ##
+  ## This proc splits values with `sep` if the type of field is `seq`.
+  ##
+  ## .. code-block:: Bash
+  ##    export FLUITS="apple,banana,orange"
+  ##    # -> @["apple", "banana", "orange"]
+  ##
+  ## You can validate values with `requires`, `mins`, `maxs`, `regexps`.
+  ##
+  ## * `requires` - Environment variables must be set and must be not empty
+  ##   value.
+  ## * `mins` - Environment variables must not be less than `val` of each items
+  ##   of seq.
+  ## * `maxs` - Environment variables must not be greater than `val` of each
+  ##   items of seq.
+  ## * `regexps` - Environment variables must regex-match `val` of each items
+  ##   of seq.
+  ##
+  ## **Supported primitive types:**
+  ##
+  ## * `string`, `bool`, `int`, `int8`, `int16`, `int32`, `int64`, `uint`, `uint8`, `uint16`, `uint32`, `uint64`, `float`, `float32`, `float64`, `char`, `byte`
+  ## * `seq[string]`, `seq[bool]`, `seq[int]`, `seq[int8]`, `seq[int16]`, `seq[int32]`, `seq[int64]`, `seq[uint]`, `seq[uint8]`, `seq[uint16]`, `seq[uint32]`, `seq[uint64]`, `seq[float]`, `seq[float32]`, `seq[float64]`, `seq[char]`, `seq[byte]`
+  ##
+  ## **Raises errors:**
+  ##
+  ## * `ValidationError <#ValidationError>`_ - Raises this error if set value
+  ##   (not integer) to int field. Raises that if value type is float, uint and
+  ##   bool. Raises that if value range is not matched `requires`, `mins`,
+  ##   `maxs`, `regexps`.
+  ##
+  ## **Note:**
+  ##
+  ## * ``array`` type is not supported.
+  ## * ``ref object`` type is not supported.
+
   # 1. Get object name and type name
   let envPrefix =
     if prefix != "": prefix
