@@ -10,7 +10,7 @@ srcDir        = "src"
 
 # Dependencies
 
-requires "nim >= 1.0.4"
+requires "nim >= 1.0.0"
 requires "regex >= 0.13.0"
 
 task docs, "Generate API documents":
