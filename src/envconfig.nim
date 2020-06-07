@@ -60,6 +60,13 @@ template validatePattern(fieldName, envName: string, regexps: seq[tuple[name: st
     if fieldName == m.name and not v.match(m.val, rm):
       raise newException(ValidationError, "'" & envName & "' was not match pattern. fieldName = " & fieldName)
 
+template validateAndSetField =
+  ## ``v`` must be intXX or uintXX.
+  validateMin(v.typedesc, fieldName, envName, mins)
+  validateMax(v.typedesc, fieldName, envName, maxs)
+  var vAny = v.toAny
+  objAny[fieldName] = vAny
+
 proc getEnvConfig*(T: typedesc, prefix = "", sep = ",",
                    requires: seq[string] = @[],
                    mins: seq[tuple[name: string, val: float64]] = @[],
@@ -166,92 +173,50 @@ proc getEnvConfig*(T: typedesc, prefix = "", sep = ",",
         objAny[fieldName] = vAny
       of "int":
         var v = parseInt(v)
-        validateMin(int, fieldName, envName, mins)
-        validateMax(int, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "int8":
         var v = parseInt(v).int8
-        validateMin(int8, fieldName, envName, mins)
-        validateMax(int8, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "int16":
         var v = parseInt(v).int16
-        validateMin(int16, fieldName, envName, mins)
-        validateMax(int16, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "int32":
         var v = parseInt(v).int32
-        validateMin(int32, fieldName, envName, mins)
-        validateMax(int32, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "int64":
         var v = parseInt(v).int64
-        validateMin(int64, fieldName, envName, mins)
-        validateMax(int64, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "uint":
         var v = parseUInt(v)
-        validateMin(uint, fieldName, envName, mins)
-        validateMax(uint, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "uint8":
         var v = parseUInt(v).uint8
-        validateMin(uint8, fieldName, envName, mins)
-        validateMax(uint8, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "uint16":
         var v = parseUInt(v).uint16
-        validateMin(uint16, fieldName, envName, mins)
-        validateMax(uint16, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "uint32":
         var v = parseUInt(v).uint32
-        validateMin(uint32, fieldName, envName, mins)
-        validateMax(uint32, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "uint64":
         var v = parseUInt(v).uint64
-        validateMin(uint64, fieldName, envName, mins)
-        validateMax(uint64, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "float":
         var v = parseFloat(v)
-        validateMin(float, fieldName, envName, mins)
-        validateMax(float, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "float32":
         var v = parseFloat(v).float32
-        validateMin(float32, fieldName, envName, mins)
-        validateMax(float32, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "float64":
         var v = parseFloat(v).float64
-        validateMin(float64, fieldName, envName, mins)
-        validateMax(float64, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       of "char":
         var v = v[0]
         var vAny = v.toAny
         objAny[fieldName] = vAny
       of "byte":
         var v = parseUInt(v).byte
-        validateMin(byte, fieldName, envName, mins)
-        validateMax(byte, fieldName, envName, maxs)
-        var vAny = v.toAny
-        objAny[fieldName] = vAny
+        validateAndSetField()
       else:
         if vType.startsWith("seq"):
           let vType = vType[4..^2]
