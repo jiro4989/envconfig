@@ -1,6 +1,6 @@
 # Package
 
-version       = "1.0.1"
+version       = "1.0.2"
 author        = "jiro4989"
 description   = "envconfig provides a function to get config objects from environment variables."
 license       = "MIT"
