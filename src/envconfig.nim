@@ -36,7 +36,7 @@ import regex
 export regex
 
 type
-  ValidationError* = object of Defect
+  ValidationError* = object of CatchableError
 
 proc camelCaseToUpperSnakeCase(s: string): string =
   for ch in s:
