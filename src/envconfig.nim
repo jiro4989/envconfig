@@ -61,6 +61,7 @@ template validatePattern(fieldName, envName: string, regexps: seq[tuple[name: st
       raise newException(ValidationError, "'" & envName & "' was not match pattern. fieldName = " & fieldName)
 
 template validateAndSetField =
+  ## ``v`` must be intXX or uintXX.
   validateMin(v.typedesc, fieldName, envName, mins)
   validateMax(v.typedesc, fieldName, envName, maxs)
   var vAny = v.toAny
