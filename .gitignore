@@ -1,2 +1,10 @@
 tests/test1
 /docs/
+/nimcache/
+
+outputGotten.txt
+tests/megatest.nim
+tests/megatest
+testresults*
+
+tests/test_envconfig
