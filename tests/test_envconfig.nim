@@ -166,26 +166,31 @@ block:
     bb: @[255.byte, 255.byte, 255.byte],
     )
 
+when NimMajor == 1 and NimMinor <= 2:
+  type RangeDefect2 = RangeError
+else:
+  type RangeDefect2 = RangeDefect
+
 block:
   type ErrorObj = object
     v: int8
   putEnv("ERROROBJ_V", "128")
   try: discard getEnvConfig(ErrorObj)
-  except RangeDefect: echo "range error 1"
+  except RangeDefect2: echo "range error 1"
 
 block:
   type ErrorObj = object
     v: int16
   putEnv("ERROROBJ_V", "32768")
   try: discard getEnvConfig(ErrorObj)
-  except RangeDefect: echo "range error 2"
+  except RangeDefect2: echo "range error 2"
 
 block:
   type ErrorObj = object
     v: int32
   putEnv("ERROROBJ_V", "2147483648")
   try: discard getEnvConfig(ErrorObj)
-  except RangeDefect: echo "range error 3"
+  except RangeDefect2: echo "range error 3"
 
 block:
   type ErrorObj = object
