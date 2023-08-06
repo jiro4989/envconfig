@@ -149,40 +149,48 @@ block:
     i2: @[127'i8, 127'i8, 127'i8],
     i3: @[32767'i16, 32767'i16, 32767'i16],
     i4: @[2147483647'i32, 2147483647'i32, 2147483647'i32],
-    i5: @[9223372036854775807'i64, 9223372036854775807'i64, 9223372036854775807'i64],
+    i5: @[9223372036854775807'i64, 9223372036854775807'i64,
+        9223372036854775807'i64],
     ui1: @[uint(1), uint(1), uint(1)],
     ui2: @[255'u8, 255'u8, 255'u8],
     ui3: @[65535'u16, 65535'u16, 65535'u16],
     ui4: @[4294967295'u32, 4294967295'u32, 4294967295'u32],
-    ui5: @[18446744073709551615'u64, 18446744073709551615'u64, 18446744073709551615'u64],
+    ui5: @[18446744073709551615'u64, 18446744073709551615'u64,
+        18446744073709551615'u64],
     f1: @[1.0, 1.0, 1.0],
     f2: @[2147483647.1'f32, 2147483647.1'f32, 2147483647.1'f32],
-    f3: @[9223372036854775807.1'f64, 9223372036854775807.1'f64, 9223372036854775807.1'f64],
+    f3: @[9223372036854775807.1'f64, 9223372036854775807.1'f64,
+        9223372036854775807.1'f64],
     b: @[true, true, true],
     c: @['a', 'a', 'a'],
     bb: @[255.byte, 255.byte, 255.byte],
     )
+
+when NimMajor == 1 and NimMinor <= 2:
+  type RangeDefect2 = RangeError
+else:
+  type RangeDefect2 = RangeDefect
 
 block:
   type ErrorObj = object
     v: int8
   putEnv("ERROROBJ_V", "128")
   try: discard getEnvConfig(ErrorObj)
-  except RangeError: echo "range error 1"
+  except RangeDefect2: echo "range error 1"
 
 block:
   type ErrorObj = object
     v: int16
   putEnv("ERROROBJ_V", "32768")
   try: discard getEnvConfig(ErrorObj)
-  except RangeError: echo "range error 2"
+  except RangeDefect2: echo "range error 2"
 
 block:
   type ErrorObj = object
     v: int32
   putEnv("ERROROBJ_V", "2147483648")
   try: discard getEnvConfig(ErrorObj)
-  except RangeError: echo "range error 3"
+  except RangeDefect2: echo "range error 3"
 
 block:
   type ErrorObj = object
