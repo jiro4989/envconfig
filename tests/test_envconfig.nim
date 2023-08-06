@@ -168,21 +168,21 @@ block:
     v: int8
   putEnv("ERROROBJ_V", "128")
   try: discard getEnvConfig(ErrorObj)
-  except RangeError: echo "range error 1"
+  except RangeDefect: echo "range error 1"
 
 block:
   type ErrorObj = object
     v: int16
   putEnv("ERROROBJ_V", "32768")
   try: discard getEnvConfig(ErrorObj)
-  except RangeError: echo "range error 2"
+  except RangeDefect: echo "range error 2"
 
 block:
   type ErrorObj = object
     v: int32
   putEnv("ERROROBJ_V", "2147483648")
   try: discard getEnvConfig(ErrorObj)
-  except RangeError: echo "range error 3"
+  except RangeDefect: echo "range error 3"
 
 block:
   type ErrorObj = object
