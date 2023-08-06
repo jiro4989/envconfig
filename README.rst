@@ -2,7 +2,7 @@
 envconfig
 #########
 
-|nimble-version| |nimble-install| |nimble-docs| |gh-actions|
+|gh-actions|
 
 envconfig provides a function to get config objects from environment variables.
 envconfig is inspired by `Go envconfig <https://github.com/kelseyhightower/envconfig>`_.
@@ -101,11 +101,5 @@ LICENSE
 
 MIT
 
-.. |nimble-version| image:: https://nimble.directory/ci/badges/envconfig/version.svg
-   :target: https://nimble.directory/ci/badges/envconfig/nimdevel/output.html
-.. |nimble-install| image:: https://nimble.directory/ci/badges/envconfig/nimdevel/status.svg
-   :target: https://nimble.directory/ci/badges/envconfig/nimdevel/output.html
-.. |nimble-docs| image:: https://nimble.directory/ci/badges/envconfig/nimdevel/docstatus.svg
-   :target: https://nimble.directory/ci/badges/envconfig/nimdevel/doc_build_output.html
 .. |gh-actions| image:: https://github.com/jiro4989/envconfig/workflows/build/badge.svg
    :target: https://github.com/jiro4989/envconfig/actions
