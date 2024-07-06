@@ -1,3 +1,4 @@
-Usage	envconfig.html#usage	 Usage	
-ValidationError	envconfig.html#ValidationError	envconfig: ValidationError	
-getEnvConfig	envconfig.html#getEnvConfig,typedesc,string,string,seq[string],seq[tuple[string,float64]],seq[tuple[string,float64]],seq[tuple[string,Regex]]	envconfig: getEnvConfig(T: typedesc; prefix = &quot;&quot;; sep = &quot;,&quot;; requires: seq[string] = @[];\n             mins: seq[tuple[name: string, val: float64]] = @[];\n             maxs: seq[tuple[name: string, val: float64]] = @[];\n             regexps: seq[tuple[name: string, val: Regex]] = @[]): T:type	
+nimTitle	envconfig	envconfig.html	module src/envconfig		0
+nim	ValidationError	envconfig.html#ValidationError	object ValidationError		39
+nim	getEnvConfig	envconfig.html#getEnvConfig,typedesc,string,string,seq[string],seq[tuple[string,float64]],seq[tuple[string,float64]],seq[tuple[string,Regex]]	proc getEnvConfig(T: typedesc; prefix = ""; sep = ","; requires: seq[string] = @[];\n             mins: seq[tuple[name: string, val: float64]] = @[];\n             maxs: seq[tuple[name: string, val: float64]] = @[];\n             regexps: seq[tuple[name: string, val: Regex]] = @[]): T:type		70
+heading	Usage	envconfig.html#usage	 Usage		0
